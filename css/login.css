@@ -1,0 +1,82 @@
+*,
+::after,
+::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+body{
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #f1f1f1;
+}
+
+.container form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #f1f1f1;
+    box-shadow: 0 0 10px #010101;
+    padding: 20px 60px;
+    border-radius: 10px;
+}
+
+h1{
+    text-align: center;
+    text-transform: lowercase;
+    font-size: 18px;
+}
+.container form div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+}
+
+.container form div label{
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background-color: #f1f1f1;
+    padding: 0 5px;
+}
+
+.container form input[type="text"],
+.container form input[type="password"],
+.container form input[type="email"]{
+    font-size: 18px;
+    outline:none;
+    border: 1px solid rgb(12, 136, 238);
+    text-indent: 4px;
+    padding: 8px 0;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+
+
+.container form input[type="submit"]{
+    background-color: rgb(12, 136, 238);
+    outline: none;
+    border: none;
+    color: #f1f1f1;
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.container form p,
+.container form a{
+    text-align: center;
+}
+
+.container form a{
+    color: rgb(12,136,238);
+}
+
