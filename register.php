@@ -1,7 +1,61 @@
 <?php
 require_once("./db/Read.php");
+require_once("./db/Post.php");
 
 
+
+$db = getUsers();
+// print_r($db);
+
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+    $username = htmlspecialchars($_POST['username']);
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $comPass = $_POST['comPass'];
+    $message = null;
+
+
+    if(empty($username)){
+        $message = "username cannot be empty";
+    }else{
+        if(empty($email)){
+            $message = "email cannot be empty";
+        }else{
+            if(empty($password)){
+                $message = "Password cannot be empty";
+            }else{
+                if(empty($comPass)){
+                    $message = "Comfirm pass cannot be empty";
+                }else{
+                    if(!checkPass($password,$comPass)){
+                        $message = "Passwords do not match";
+                      }else{
+                            $user = getUser($username);
+                            if(empty($user)){
+                                $connect = createUser($username,$email,password_hash($password,PASSWORD_BCRYPT));
+                            }else{
+                                $message = "Usename already taken";
+                            }
+                      }
+                }
+            }
+        }
+    }
+
+
+
+    
+
+    
+}
+
+function checkPass($password,$comfirmPass):bool{
+    if($password != $comfirmPass){
+        return false;
+    }
+    return true;
+}
 
 ?>
 
@@ -16,7 +70,7 @@ require_once("./db/Read.php");
 </head>
 <body>
     <div class="container">
-        <form action="">
+        <form action="" method="post">
             <h1>Sign Up</h1>
             <div>
                 <label for="username">username</label>
@@ -34,8 +88,18 @@ require_once("./db/Read.php");
                 <label for="comPass">comfirm</label>
                 <input type="password" id="comPass" name="comPass">
             </div>
+            <?php
+                global $message;
+                if(!is_null($message)){
+                    echo '
+                    <p style="text-align: left;color:red;">
+                    '.$message.'
+                    </p>
+                    ';
+                }
+            ?>
             <div>
-                <input type="submit" value="sign up">
+                <input type="submit" value="sign up" name="create">
             </div>
             <p>or</p>
             <a href="./login.php">Login</a>
