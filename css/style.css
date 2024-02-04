@@ -151,3 +151,14 @@ main{
     font-weight: 500;
 }
 
+footer {
+    background-color: var(--secondary-color);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
