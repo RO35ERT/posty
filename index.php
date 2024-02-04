@@ -87,8 +87,10 @@ function getPostedTime($posted):string{
             </div>
         </main>
         <footer>
-            footer
+            <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+            <p>Terms of Service | Privacy Policy | Contact Us</p>
         </footer>
+
     </div>
 </body>
 </html>
